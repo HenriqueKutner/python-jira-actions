@@ -12,8 +12,11 @@ projects = jira.projects()
 
 keys = sorted(project.key for project in projects)[11]
 
-my_commit = "[GOPS-3098]: test commita"
+commit_message = os.environ.get("COMMIT_MESSAGE")
+print(commit_message)
 
-issue = jira.issue("GOPS-3098")
+issue_key = commit_message.split(':')[0].strip('[').strip(']')
 
-print(issue.get_field('description'))
+issue = jira.issue(issue_key)
+
+print(issue.fields.description)
