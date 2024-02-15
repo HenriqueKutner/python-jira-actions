@@ -25,16 +25,16 @@ jobs:
           import os
           from jira import JIRA
           
-          # Load Jira token from environment variable
+          
           secret_key = os.getenv("TOKEN")
           
-          # Initialize Jira client
-          jira = JIRA(server="https://jiracloud.cit.com.br/", basic_auth=("username", secret_key))  # Update "username" with your Jira username
           
-          # Fetch the issue
+          jira = JIRA(server="https://jiracloud.cit.com.br/", token_auth=secret_key)
+          
+          
           issue = jira.issue("GOPS-3098")
           
-          # Print description of the issue
+          
           print(issue.fields.description)
         env:
           TOKEN: ${{ secrets.JIRA_TOKEN }}
