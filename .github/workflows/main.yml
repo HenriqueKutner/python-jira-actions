@@ -25,7 +25,7 @@ jobs:
       - name: Print Jira issue description
         run: |
           from jira import JIRA
-          jira = JIRA(server="https://jiracloud.cit.com.br/", token_auth=secret_key) 
+          jira = JIRA(server="https://jiracloud.cit.com.br/", token_auth=JIRA_TOKEN) 
           issue = jira.issue("GOPS-3098")
           print(issue.fields.description)
         env:
