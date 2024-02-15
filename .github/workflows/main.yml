@@ -13,4 +13,4 @@ jobs:
         with:
           fetch-depth: 0
       - name: Print a message
-        run: echo "GitHub Actions workflow is running!"
+        run: echo "other message"
