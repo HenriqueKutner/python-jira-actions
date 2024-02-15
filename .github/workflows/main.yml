@@ -9,8 +9,32 @@ jobs:
   run_code_review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          fetch-depth: 0
-      - name: Print a message
-        run: echo "other message"
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install jira
+
+      - name: Print Jira issue description
+        run: |
+          import os
+          from jira import JIRA
+          
+          # Load Jira token from environment variable
+          secret_key = os.getenv("TOKEN")
+          
+          # Initialize Jira client
+          jira = JIRA(server="https://jiracloud.cit.com.br/", basic_auth=("username", secret_key))  # Update "username" with your Jira username
+          
+          # Fetch the issue
+          issue = jira.issue("GOPS-3098")
+          
+          # Print description of the issue
+          print(issue.fields.description)
+        env:
+          TOKEN: ${{ secrets.JIRA_TOKEN }}
