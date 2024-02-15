@@ -12,7 +12,7 @@ projects = jira.projects()
 
 keys = sorted(project.key for project in projects)[11]
 
-my_commit = "[GOPS-3098]: test commita"
+my_commit = "[GOPS-3098]: test"
 
 issue = jira.issue("GOPS-3098")
 
