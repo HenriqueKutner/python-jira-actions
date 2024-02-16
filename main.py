@@ -13,10 +13,11 @@ projects = jira.projects()
 keys = sorted(project.key for project in projects)[11]
 
 commit_messages = os.environ.get("COMMIT_MESSAGES")
+
 if commit_messages:
     commit_messages = commit_messages.split("\n")
     for commit_message in commit_messages:
-        print(commit_message)
+        print("commit_message = ", commit_message)
 
 # issue_key = commit_message.split(':')[0].strip('[').strip(']')
 
