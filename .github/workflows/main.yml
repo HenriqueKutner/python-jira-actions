@@ -29,7 +29,7 @@ jobs:
       #     echo "COMMIT_MESSAGES=$COMMIT_MESSAGES" >> $GITHUB_ENV
       - name: Get all commit messages
         run: |
-          COMMIT_MESSAGES=$(git log --pretty=%B)
+          COMMIT_MESSAGES=$(git rev-list --all --format=%B)
           echo "COMMIT_MESSAGES=$COMMIT_MESSAGES" >> $GITHUB_ENV
 
       - name: Run main.py
