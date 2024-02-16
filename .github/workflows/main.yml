@@ -25,12 +25,9 @@ jobs:
 
       - name: Get all commit messages
         run: |
-          COMMIT_MESSAGES=""
-          for commit in $(git log --pretty=%B); do
-            COMMIT_MESSAGES="$COMMIT_MESSAGES\n$commit"
-          done
-          echo -e "COMMIT_MESSAGES=$COMMIT_MESSAGES" >> $GITHUB_ENV
-          echo -e "$COMMIT_MESSAGES"
+          COMMIT_MESSAGES=$(git log --pretty=%B)
+          echo "COMMIT_MESSAGES=\"$COMMIT_MESSAGES\"" >> $GITHUB_ENV
+          echo "$COMMIT_MESSAGES"
 
 
       - name: Run main.py
