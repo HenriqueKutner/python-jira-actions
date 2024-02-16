@@ -23,10 +23,6 @@ jobs:
           python -m pip install 'jira[cli]'
           python -m pip install python-dotenv
 
-      #- name: Get last commit message
-        # run: |
-        #   COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-        #   echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
       - name: Get all commit messages
         run: |
           COMMIT_MESSAGES=$(git log --pretty=%B)
